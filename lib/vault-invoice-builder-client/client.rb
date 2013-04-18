@@ -30,5 +30,14 @@ module Vault::InvoiceBuilder
         expects: [200])
       response.body
     end
+
+    def store(receipt)
+      connection = Excon.new(@url)
+      response = connection.post(
+        path: '/store',
+        headers: {'Content-Type' => 'application/json'},
+        body: JSON.generate(receipt),
+        expects: [200])
+    end
   end
 end
