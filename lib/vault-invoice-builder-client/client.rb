@@ -31,7 +31,7 @@ module Vault::InvoiceBuilder
       response.body
     end
 
-    # POST an invoice to to the proxy-able /invoice/:id endpoint
+    # POST a statement to to the proxy-able /statement/:id endpoint
     #
     # @param statement [Hash] An object matching the statement format described in
     #   the `Vault::InvoiceBuilder` README.
@@ -42,7 +42,7 @@ module Vault::InvoiceBuilder
       connection = Excon.new(@url)
       id = statement[:id] || statement['id']
       response = connection.post(
-        path: "/invoice/#{id}",
+        path: "/statement/#{id}",
         headers: {'Content-Type' => 'application/json'},
         body: JSON.generate(statement),
         expects: [200])

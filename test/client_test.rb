@@ -94,7 +94,7 @@ class ClientTest < Vault::TestCase
     Excon.stub(method: :post) do |request|
       assert_equal('vault-invoice-builder.herokuapp.com:443',
                    request[:host_port])
-      assert_equal('/invoice/1', request[:path])
+      assert_equal('/statement/1', request[:path])
       assert_equal('application/json', request[:headers]['Content-Type'])
       Excon.stubs.pop
       {status: 200}
@@ -109,7 +109,7 @@ class ClientTest < Vault::TestCase
     Excon.stub(method: :post) do |request|
       assert_equal('vault-invoice-builder.herokuapp.com:443',
                    request[:host_port])
-      assert_equal('/invoice/1', request[:path])
+      assert_equal('/statement/1', request[:path])
       assert_equal('application/json', request[:headers]['Content-Type'])
       Excon.stubs.pop
       {status: 200}
